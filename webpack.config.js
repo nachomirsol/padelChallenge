@@ -11,6 +11,7 @@ module.exports = () => {
 				components: path.resolve(__dirname, 'src/components/'),
 				pages: path.resolve(__dirname, 'src/pages/'),
 				routes: path.resolve(__dirname, 'src/routes/'),
+				store: path.resolve(__dirname, 'src/store/'),
 				models: path.resolve(__dirname, 'src/models/'),
 				constants: path.resolve(__dirname, 'src/constants/'),
 				styles: path.resolve(__dirname, 'src/styles/'),
