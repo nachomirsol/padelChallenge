@@ -1,0 +1,30 @@
+@import 'styles/index.scss';
+
+.login {
+	width: 100%;
+	height: 100vh;
+	background-color: $color-background-light;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	img {
+		width: 80px;
+		height: 80px;
+		border-radius: 1rem;
+	}
+	&__form {
+		width: 500px;
+		//background-color: $color-white;
+		padding: $spacing-m;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		position: relative;
+		border-radius: 8px;
+		margin: $spacing-m 0;
+		span {
+			color: $color-main;
+		}
+	}
+}

@@ -8,7 +8,7 @@ const userReducer = (state = initialState, action: any) => {
 		case 'USER_LOGIN_SUCCESS':
 			return {
 				...state,
-				...action.content,
+				isLogged: true,
 			};
 
 		default:

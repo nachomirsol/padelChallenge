@@ -1,5 +1,5 @@
 /** Libraries */
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 /** Components */
 import { Header } from 'components/header';
 /** Models */
@@ -24,6 +24,7 @@ export const AppRoutes = () => {
 					/>
 				);
 			})}
+			<Route path='*' element={<Navigate to='/' />} />
 		</Routes>
 	);
 };
