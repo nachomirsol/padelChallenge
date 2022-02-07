@@ -1,5 +1,30 @@
 @import 'styles/index.scss';
 
 .dashboard {
-	background-color: red;
+	width: 100%;
+	height: 100vh;
+	background-color: $color-background-light;
+	display: flex;
+	flex-direction: column;
+	margin-left: auto;
+	margin-right: auto;
+	&__filter {
+		display: flex;
+		justify-content: center;
+		margin: $spacing-l 0;
+	}
+	&__grid {
+		max-width: 1366px;
+		margin-left: auto;
+		margin-right: auto;
+		padding: $spacing-xl 0;
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+		grid-auto-rows: 18rem;
+		gap: 16px;
+		&-item {
+			background-color: $color-background-white;
+			box-shadow: 0 1px 3px rgb(0 24 48 / 20%);
+		}
+	}
 }

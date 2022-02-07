@@ -1,12 +1,6 @@
-/** Libraries */
-import { Link } from 'react-router-dom';
+/** Styles */
+import './styles/header.scss';
 
 export const Header = () => {
-	return (
-		<>
-			<Link to='/login'>login</Link>
-			<Link to='/'>dashboard</Link>
-			<Link to='/settings'>settings</Link>
-		</>
-	);
+	return <div className='header'>This is header</div>;
 };
