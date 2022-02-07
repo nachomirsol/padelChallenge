@@ -9,7 +9,12 @@ export const Button = ({
 	onClick,
 }: ButtonProps) => {
 	return (
-		<button className='button' style={{ width, height }} onClick={onClick}>
+		<button
+			role='button'
+			className='button'
+			style={{ width, height }}
+			onClick={onClick}
+		>
 			{label}
 		</button>
 	);

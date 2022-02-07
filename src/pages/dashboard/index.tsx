@@ -1,14 +1,25 @@
+import { useEffect } from 'react';
 /** Libraries */
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 /** Components */
 import { Searchbar } from 'components/searchbar';
 import { Button } from 'components/button';
+import { Card } from 'components/card';
+import { Loading } from 'components/loading';
+/** Actions */
+import { getListPhotoImages } from 'store/photos/actions';
 /** Styles */
 import './styles/dashboard.scss';
 
-export const Dashboard = () => {
-	const testSelector = useSelector((state) => state.user);
-	console.log(testSelector);
+export const Dashboard: React.FC = () => {
+	const { loading, photos } = useSelector((state) => state?.photos);
+
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(getListPhotoImages());
+	}, []);
 	return (
 		<div className='dashboard'>
 			<div className='dashboard__filter'>
@@ -28,10 +39,21 @@ export const Dashboard = () => {
 				/>
 			</div>
 
-			<div className='dashboard__grid'>
-				{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => {
-					return <div className='dashboard__grid-item'>{item}</div>;
-				})}
+			<div className={`dashboard__content ${loading && 'loadContent'}`}>
+				{loading ? (
+					<Loading />
+				) : (
+					photos.map(({ description, urls, user, likes }: any) => {
+						return (
+							<Card
+								title={user.first_name}
+								description={description || 'description'}
+								imgUrl={urls.regular}
+								likes={likes}
+							/>
+						);
+					})
+				)}
 			</div>
 		</div>
 	);

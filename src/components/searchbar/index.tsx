@@ -12,7 +12,7 @@ export const Searchbar = ({
 	onChange,
 }: SearchbarTypes) => {
 	return (
-		<label className='searchbar' style={{ width: width }}>
+		<label role='searchbar' className='searchbar' style={{ width: width }}>
 			<input
 				type={type}
 				name={name}

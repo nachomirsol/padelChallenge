@@ -1,6 +1,7 @@
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = () => {
 	return {
@@ -12,6 +13,8 @@ module.exports = () => {
 				pages: path.resolve(__dirname, 'src/pages/'),
 				routes: path.resolve(__dirname, 'src/routes/'),
 				store: path.resolve(__dirname, 'src/store/'),
+				hooks: path.resolve(__dirname, 'src/hooks/'),
+				api: path.resolve(__dirname, 'src/api/'),
 				models: path.resolve(__dirname, 'src/models/'),
 				constants: path.resolve(__dirname, 'src/constants/'),
 				styles: path.resolve(__dirname, 'src/styles/'),
@@ -25,6 +28,7 @@ module.exports = () => {
 			new HtmlWebpackPlugin({
 				template: './src/index.html',
 			}),
+			new Dotenv(),
 		],
 		module: {
 			rules: [
