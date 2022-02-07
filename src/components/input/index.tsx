@@ -14,6 +14,7 @@ export const Input = ({
 }: InputTypes) => {
 	return (
 		<input
+			role='inputText'
 			type={type}
 			name={name}
 			placeholder={placeholder}
