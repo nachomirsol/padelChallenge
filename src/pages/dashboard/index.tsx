@@ -1,60 +1,69 @@
-import { useEffect } from 'react';
-/** Libraries */
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
 /** Components */
 import { Searchbar } from 'components/searchbar';
 import { Button } from 'components/button';
 import { Card } from 'components/card';
 import { Loading } from 'components/loading';
-/** Actions */
-import { getListPhotoImages } from 'store/photos/actions';
+import { NoData } from 'components/noData';
+/** Hooks */
+import { useDashboard } from './hooks/useDashboard';
 /** Styles */
 import './styles/dashboard.scss';
 
 export const Dashboard: React.FC = () => {
-	const { loading, photos } = useSelector((state) => state?.photos);
+	const {
+		query,
+		loading,
+		photos,
+		updateLikes,
+		handleChange,
+		handleSearchClick,
+	} = useDashboard();
 
-	const dispatch = useDispatch();
+	const renderResult = () => {
+		if (loading) {
+			return <Loading />;
+		}
+		if (photos.length === 0) {
+			return <NoData label={'No data Found'} />;
+		}
 
-	useEffect(() => {
-		dispatch(getListPhotoImages());
-	}, []);
+		return photos.map(({ id, description, urls, user, likes }: any) => {
+			return (
+				<Card
+					id={id}
+					key={id}
+					title={user?.first_name ?? 'photo title'}
+					description={description || 'description'}
+					likes={likes}
+					imgUrl={urls.regular}
+					onClick={() => updateLikes(id)}
+				/>
+			);
+		});
+	};
+
 	return (
 		<div className='dashboard'>
 			<div className='dashboard__filter'>
 				<Searchbar
-					type='password'
+					type='search'
 					placeholder={'Search...'}
 					width={'30%'}
-					name={'password'}
-					onChange={() => ({})}
-					value={''}
+					height={'50px'}
+					name={'search'}
+					onChange={handleChange}
+					value={query}
 				/>
 				<Button
 					width={'100px'}
 					label={'Filter'}
 					height={'auto'}
-					onClick={() => ({})}
+					onClick={() => handleSearchClick(query)}
 				/>
 			</div>
 
 			<div className={`dashboard__content ${loading && 'loadContent'}`}>
-				{loading ? (
-					<Loading />
-				) : (
-					photos.map(({ id, description, urls, user, likes }: any) => {
-						return (
-							<Card
-								key={id}
-								title={user?.first_name ?? 'photo title'}
-								description={description || 'description'}
-								likes={likes}
-								imgUrl={urls.regular}
-							/>
-						);
-					})
-				)}
+				{renderResult()}
 			</div>
 		</div>
 	);

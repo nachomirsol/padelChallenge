@@ -1,5 +1,6 @@
 export type SearchbarTypes = {
 	width?: string;
+	height?: string;
 	type: string;
 	name: string;
 	placeholder?: string;
