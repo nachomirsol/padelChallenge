@@ -9,7 +9,7 @@ import { useDashboard } from './hooks/useDashboard';
 /** Styles */
 import './styles/dashboard.scss';
 
-export const Dashboard: React.FC = () => {
+export const Dashboard = () => {
 	const {
 		query,
 		loading,
