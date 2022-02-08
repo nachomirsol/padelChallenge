@@ -1,7 +1,8 @@
 export type CardType = {
-	id?: string;
+	id: string;
 	title: string;
 	description: string;
 	likes: number;
 	imgUrl: string;
+	onClick: (id: string) => void;
 };

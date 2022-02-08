@@ -5,6 +5,7 @@ import './styles/searchbar.scss';
 
 export const Searchbar = ({
 	width = '100%',
+	height = '100%',
 	type = 'text',
 	name = 'name',
 	placeholder = 'placeholder',
@@ -12,7 +13,7 @@ export const Searchbar = ({
 	onChange,
 }: SearchbarTypes) => {
 	return (
-		<label role='searchbar' className='searchbar' style={{ width: width }}>
+		<label role='searchbar' className='searchbar' style={{ width, height }}>
 			<input
 				type={type}
 				name={name}

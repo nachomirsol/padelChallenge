@@ -5,12 +5,13 @@ import { HeartIcon } from 'assets/icons/heart';
 import { CardType } from './types';
 /** Styles */
 import './styles/card.scss';
-export const Card: React.FC = ({
+export const Card = ({
 	id,
 	title,
 	description,
 	likes,
 	imgUrl,
+	onClick,
 }: CardType) => {
 	return (
 		<div className='card'>
@@ -20,7 +21,9 @@ export const Card: React.FC = ({
 			<div className='card__footer'>
 				<div className='card__footer-title'>{title}</div>
 				<div className='card__footer-actions'>
-					<HeartIcon />
+					<span onClick={() => onClick(id)}>
+						<HeartIcon />
+					</span>
 					<span>{likes}</span>
 				</div>
 			</div>

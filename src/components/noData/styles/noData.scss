@@ -1,0 +1,12 @@
+@import 'styles/index.scss';
+
+.noData {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px dotted $color-border-gray;
+	padding: $spacing-l;
+	color: $color-main;
+	width: 200px;
+	height: 200px;
+}
