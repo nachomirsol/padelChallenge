@@ -2,10 +2,18 @@
 import { getPhotoImages } from 'api/photos';
 /** Action types */
 import {
+	FILTER_PHOTO_LIST,
 	PHOTO_LIST_FAIL,
 	PHOTO_LIST_REQUEST,
 	PHOTO_LIST_SUCCESS,
 } from '../actionTypes';
+
+export const filterListPhotos = (query: string) => (dispatch: any) => {
+	dispatch({
+		type: FILTER_PHOTO_LIST,
+		payload: query,
+	});
+};
 
 export const getListPhotoImages = () => async (dispatch: any) => {
 	try {
@@ -20,10 +28,7 @@ export const getListPhotoImages = () => async (dispatch: any) => {
 	} catch (error) {
 		dispatch({
 			type: PHOTO_LIST_FAIL,
-			payload:
-				error.response && error.response.data.message
-					? error.response.data.message
-					: error.message,
+			payload: 'error',
 		});
 	}
 };

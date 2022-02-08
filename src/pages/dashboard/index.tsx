@@ -43,13 +43,14 @@ export const Dashboard: React.FC = () => {
 				{loading ? (
 					<Loading />
 				) : (
-					photos.map(({ description, urls, user, likes }: any) => {
+					photos.map(({ id, description, urls, user, likes }: any) => {
 						return (
 							<Card
-								title={user.first_name}
+								key={id}
+								title={user?.first_name ?? 'photo title'}
 								description={description || 'description'}
-								imgUrl={urls.regular}
 								likes={likes}
+								imgUrl={urls.regular}
 							/>
 						);
 					})

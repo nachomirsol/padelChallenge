@@ -6,7 +6,6 @@ import { CardType } from './types';
 /** Styles */
 import './styles/card.scss';
 export const Card: React.FC = ({
-	id,
 	title,
 	description,
 	likes,
