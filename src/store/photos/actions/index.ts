@@ -5,6 +5,7 @@ import {
 	FILTER_PHOTO_LIST_FAIL,
 	FILTER_PHOTO_LIST_REQUEST,
 	FILTER_PHOTO_LIST_SUCCESS,
+	LOAD_MORE_DATA_SUCCESS,
 	PHOTO_LIST_FAIL,
 	PHOTO_LIST_REQUEST,
 	PHOTO_LIST_SUCCESS,
@@ -12,17 +13,33 @@ import {
 	UPDATE_PHOTO_LIKES_SUCCESS,
 } from '../actionTypes';
 
-export const getListPhotoImages = () => async (dispatch: any) => {
+export const getListPhotoImages = (page: number) => async (dispatch: any) => {
 	try {
 		dispatch({ type: PHOTO_LIST_REQUEST });
 
-		const { data } = await getPhotos();
+		const { data } = await getPhotos(page);
 
 		dispatch({
 			type: PHOTO_LIST_SUCCESS,
 			payload: data,
 		});
 	} catch (error) {
+		dispatch({
+			type: PHOTO_LIST_FAIL,
+			payload: 'error',
+		});
+	}
+};
+
+export const loadMoreData = (page: number) => async (dispatch: any) => {
+	try {
+		const { data } = await getPhotos(page);
+
+		dispatch({
+			type: LOAD_MORE_DATA_SUCCESS,
+			payload: data,
+		});
+	} catch {
 		dispatch({
 			type: PHOTO_LIST_FAIL,
 			payload: 'error',

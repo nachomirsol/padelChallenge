@@ -5,9 +5,9 @@ import { API_UNSPLASH } from 'constants/apis';
 
 const { BASE_URL, CLIENT_ID } = API_UNSPLASH;
 
-export const getPhotos = () => {
+export const getPhotos = (page = 1) => {
 	return axios.get(
-		`${BASE_URL}/photos?page=1&per_page=30&client_id=${CLIENT_ID}`
+		`${BASE_URL}/photos?page=${page}&per_page=30&client_id=${CLIENT_ID}`
 	);
 };
 

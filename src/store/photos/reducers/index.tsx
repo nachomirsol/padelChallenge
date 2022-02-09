@@ -2,6 +2,7 @@ import {
 	FILTER_PHOTO_LIST_FAIL,
 	FILTER_PHOTO_LIST_REQUEST,
 	FILTER_PHOTO_LIST_SUCCESS,
+	LOAD_MORE_DATA_SUCCESS,
 	PHOTO_LIST_FAIL,
 	PHOTO_LIST_REQUEST,
 	PHOTO_LIST_SUCCESS,
@@ -28,6 +29,12 @@ const photosReducer = (state = { photos: [] }, action: any): any => {
 
 		case PHOTO_LIST_FAIL:
 			return { loading: false, error: true, photos: [] };
+
+		case LOAD_MORE_DATA_SUCCESS: {
+			return {
+				photos: state.photos.concat(action.payload),
+			};
+		}
 
 		case UPDATE_PHOTO_LIKES_SUCCESS:
 			return setUpdateLike(state, action);
