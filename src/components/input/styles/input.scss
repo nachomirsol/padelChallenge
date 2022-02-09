@@ -1,0 +1,18 @@
+@import 'styles/index.scss';
+
+input {
+	border: none;
+	border-bottom: 1px solid #ddd;
+	font-size: $font-size-s;
+	padding: $spacing-s;
+	margin: $spacing-s;
+	letter-spacing: 0.5px;
+	color: $color-text-gray-light;
+	font-family: $font-secondary;
+	font-weight: $font-weight-semiBold;
+	background-color: transparent;
+}
+
+::placeholder {
+	color: $color-text-gray-light;
+}
