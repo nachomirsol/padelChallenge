@@ -29,4 +29,14 @@
 			box-shadow: 2px 2px 10px rgb(0 24 48 / 10%);
 		}
 	}
+	&__loadMore {
+		width: 200px;
+		margin: $spacing-s auto;
+		display: flex;
+		justify-content: center;
+		border: 1px solid $color-main;
+		padding: $spacing-s;
+		color: $color-main;
+		cursor: pointer;
+	}
 }

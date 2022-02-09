@@ -6,19 +6,26 @@ import { useDispatch } from 'react-redux';
 import {
 	filterPhotos,
 	getListPhotoImages,
+	loadMoreData,
 	updateLike,
 } from 'store/photos/actions';
 
 export const useDashboard = () => {
 	const [query, setQuery] = useState('');
 
+	const [page, setPage] = useState(1);
+
 	const { loading, photos } = useSelector((state) => state?.photos);
 
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(getListPhotoImages());
-	}, []);
+		if (page === 1) {
+			dispatch(getListPhotoImages(page));
+		} else {
+			dispatch(loadMoreData(page));
+		}
+	}, [page]);
 
 	const updateLikes = (id: string) => {
 		dispatch(updateLike(id));
@@ -30,10 +37,14 @@ export const useDashboard = () => {
 
 	const handleSearchClick = (querySearch: string) => {
 		if (query === '') {
-			dispatch(getListPhotoImages());
+			dispatch(getListPhotoImages(1));
 		} else {
 			dispatch(filterPhotos(querySearch));
 		}
+	};
+
+	const loadMoreContent = () => {
+		setPage((prevPage) => prevPage + 1);
 	};
 
 	return {
@@ -43,5 +54,6 @@ export const useDashboard = () => {
 		updateLikes,
 		handleChange,
 		handleSearchClick,
+		loadMoreContent,
 	};
 };

@@ -17,9 +17,10 @@ export const Dashboard = () => {
 		updateLikes,
 		handleChange,
 		handleSearchClick,
+		loadMoreContent,
 	} = useDashboard();
 
-	const renderResult = () => {
+	const renderPhotoList = () => {
 		if (loading) {
 			return <Loading />;
 		}
@@ -63,8 +64,13 @@ export const Dashboard = () => {
 			</div>
 
 			<div className={`dashboard__content ${loading && 'loadContent'}`}>
-				{renderResult()}
+				{renderPhotoList()}
 			</div>
+			{photos.length > 0 && (
+				<div className='dashboard__loadMore' onClick={loadMoreContent}>
+					Load More
+				</div>
+			)}
 		</div>
 	);
 };
