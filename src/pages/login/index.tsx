@@ -9,7 +9,7 @@ import LOGO_PLAYTOMIC from 'assets/logo/logo-playtomic.png';
 import './styles/login.scss';
 
 export const Login: React.FC = () => {
-	const { credentials, handleChange, handleClick, error } = useLogin();
+	const { credentials, handleChange, handleSubmit, error } = useLogin();
 
 	return (
 		<div className='login'>
@@ -35,7 +35,7 @@ export const Login: React.FC = () => {
 					label='login'
 					width={'60%'}
 					height={'40px'}
-					onClick={handleClick}
+					onClick={handleSubmit}
 				/>
 				{error && <span>Error in Login or password</span>}
 			</div>

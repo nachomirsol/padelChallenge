@@ -1,18 +1,19 @@
+import { logInWithEmailAndPassword } from 'api/auth';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 /** Actions */
-import { setUserLogged } from 'store/user/actions';
+import { setUserLogged, setUserLoginFailure } from 'store/user/actions';
 /** Utils */
 import { setLocalStorage } from 'utils/localStorage';
-/** Constants */
-import { CREDENTIALS } from 'constants/credentials';
 
 export const useLogin = () => {
 	const [credentials, setCredentials] = useState({
 		email: '',
 		password: '',
 	});
+
+	const isLogged = useSelector((state) => state?.user?.isLogged);
 
 	const navigate = useNavigate();
 
@@ -27,23 +28,25 @@ export const useLogin = () => {
 		setError(false);
 	};
 
-	const handleClick = () => {
-		if (JSON.stringify(credentials) === JSON.stringify(CREDENTIALS)) {
-			dispatch(setUserLogged());
-			setLocalStorage(credentials.email);
-			setError(false);
-
+	const handleSubmit = async () => {
+		try {
+			const userLogin = await logInWithEmailAndPassword(
+				credentials.email,
+				credentials.password
+			);
+			console.log(userLogin);
+			dispatch(setUserLogged(userLogin));
 			navigate('/');
-		} else {
-			console.log('FAIL');
+		} catch (error) {
 			setError(true);
+			dispatch(setUserLoginFailure());
 		}
 	};
 
 	return {
 		credentials,
 		handleChange,
-		handleClick,
+		handleSubmit,
 		error,
 	};
 };
