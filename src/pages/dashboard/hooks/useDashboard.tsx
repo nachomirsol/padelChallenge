@@ -55,5 +55,6 @@ export const useDashboard = () => {
 		handleChange,
 		handleSearchClick,
 		loadMoreContent,
+		getListPhotoImages
 	};
 };

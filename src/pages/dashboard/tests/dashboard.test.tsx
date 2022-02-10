@@ -1,16 +1,18 @@
 /** Libraries */
 import { render, screen, fireEvent } from '@testing-library/react';
+
+import { renderWithRedux } from 'utils/tests';
 import '@testing-library/jest-dom/extend-expect';
 import user from '@testing-library/user-event';
 /** Components */
-import { Loading } from '../';
+import { Dashboard } from '..';
 
-describe('Loading component', () => {
+describe('Dashboard Page Component', () => {
 	it('Should render component with provided props', () => {
-		render(<Loading />);
+		renderWithRedux(<Dashboard />);
 
-		const input = screen.getByRole('loading');
+		const dashboard = screen.getByRole('button');
 
-		expect(input).toBeInTheDocument();
+		expect(dashboard).toBeInTheDocument();
 	});
 });
