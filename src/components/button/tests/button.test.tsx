@@ -5,7 +5,7 @@ import user from '@testing-library/user-event';
 /** Components */
 import { Button } from '..';
 
-describe('Input component', () => {
+describe('Button component', () => {
 	const props = {
 		height: '60px',
 		label: 'text',

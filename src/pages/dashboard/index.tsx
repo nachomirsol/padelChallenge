@@ -9,7 +9,7 @@ import { useDashboard } from './hooks/useDashboard';
 /** Styles */
 import './styles/dashboard.scss';
 
-export const Dashboard = () => {
+export const Dashboard: React.FC = () => {
 	const {
 		query,
 		loading,
@@ -44,7 +44,7 @@ export const Dashboard = () => {
 	};
 
 	return (
-		<div className='dashboard'>
+		<div className='dashboard' role='dashboard'>
 			<div className='dashboard__filter'>
 				<Searchbar
 					type='search'
