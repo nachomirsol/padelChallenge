@@ -1,12 +1,12 @@
+/** Libraries */
+import jwt_decode from 'jwt-decode';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { logInWithEmailAndPassword } from 'api/auth';
+
 /** Actions */
-import { setUserLogged } from 'store/user/actions';
-/** Utils */
-import { setLocalStorage } from 'utils/localStorage';
-/** Constants */
-import { CREDENTIALS } from 'constants/credentials';
+import { setUserLogged, setUserLoginFailure } from 'store/user/actions';
 
 export const useLogin = () => {
 	const [credentials, setCredentials] = useState({
@@ -27,23 +27,26 @@ export const useLogin = () => {
 		setError(false);
 	};
 
-	const handleClick = () => {
-		if (JSON.stringify(credentials) === JSON.stringify(CREDENTIALS)) {
-			dispatch(setUserLogged());
-			setLocalStorage(credentials.email);
-			setError(false);
+	const handleSubmit = async () => {
+		const userLogin = await logInWithEmailAndPassword(
+			credentials.email,
+			credentials.password
+		);
 
-			navigate('/');
-		} else {
-			console.log('FAIL');
+		if (!userLogin) {
 			setError(true);
+			dispatch(setUserLoginFailure());
+		} else {
+			const userEmail = jwt_decode(userLogin);
+			dispatch(setUserLogged(userEmail?.email));
+			navigate('/');
 		}
 	};
 
 	return {
 		credentials,
 		handleChange,
-		handleClick,
+		handleSubmit,
 		error,
 	};
 };
