@@ -1,11 +1,12 @@
 /** Libraries */
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import jwt_decode from 'jwt-decode';
 /** Constants */
 import { ROUTES } from 'models/routes';
-/**Utils */
+/** Utils */
 import { checkLocalStorage } from 'utils/localStorage';
+/** Types */
+import { RouteType } from 'types/routes';
 /** Assets */
 import { UserIcon } from 'assets/icons/user';
 
@@ -21,7 +22,7 @@ export const Header = () => {
 					<Link to={'/'}>Playtomic</Link>
 				</h1>
 				<div className='header__content-links'>
-					{ROUTES.filter((route) => route.isNavbar === true).map(
+					{ROUTES.filter((route: RouteType) => route.isNavbar === true).map(
 						({ id, label, path }) => {
 							return (
 								<span key={id}>

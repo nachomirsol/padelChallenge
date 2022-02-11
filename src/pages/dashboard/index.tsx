@@ -4,6 +4,8 @@ import { Button } from 'components/button';
 import { Card } from 'components/card';
 import { Loading } from 'components/loading';
 import { NoData } from 'components/noData';
+/** Types */
+import { PhotoListType } from './types';
 /** Hooks */
 import { useDashboard } from './hooks/useDashboard';
 /** Styles */
@@ -28,19 +30,21 @@ export const Dashboard: React.FC = () => {
 			return <NoData label={'No data Found'} />;
 		}
 
-		return photos.map(({ id, description, urls, user, likes }: any) => {
-			return (
-				<Card
-					id={id}
-					key={id}
-					title={user?.first_name ?? 'photo title'}
-					description={description || 'description'}
-					likes={likes}
-					imgUrl={urls.regular}
-					onClick={() => updateLikes(id)}
-				/>
-			);
-		});
+		return photos.map(
+			({ id, description, urls, user, likes }: PhotoListType) => {
+				return (
+					<Card
+						id={id}
+						key={id}
+						title={user?.first_name ?? 'photo title'}
+						description={description || 'description'}
+						likes={likes}
+						imgUrl={urls.regular}
+						onClick={() => updateLikes(id)}
+					/>
+				);
+			}
+		);
 	};
 
 	return (
@@ -59,6 +63,7 @@ export const Dashboard: React.FC = () => {
 					width={'100px'}
 					label={'Filter'}
 					height={'auto'}
+					disabled={false}
 					onClick={() => handleSearchClick(query)}
 				/>
 			</div>
