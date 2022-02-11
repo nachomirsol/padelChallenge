@@ -1,19 +1,18 @@
-import { logInWithEmailAndPassword } from 'api/auth';
+/** Libraries */
+import jwt_decode from 'jwt-decode';
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { logInWithEmailAndPassword } from 'api/auth';
+
 /** Actions */
 import { setUserLogged, setUserLoginFailure } from 'store/user/actions';
-/** Utils */
-import { setLocalStorage } from 'utils/localStorage';
 
 export const useLogin = () => {
 	const [credentials, setCredentials] = useState({
 		email: '',
 		password: '',
 	});
-
-	const isLogged = useSelector((state) => state?.user?.isLogged);
 
 	const navigate = useNavigate();
 
@@ -29,17 +28,18 @@ export const useLogin = () => {
 	};
 
 	const handleSubmit = async () => {
-		try {
-			const userLogin = await logInWithEmailAndPassword(
-				credentials.email,
-				credentials.password
-			);
-			console.log(userLogin);
-			dispatch(setUserLogged(userLogin));
-			navigate('/');
-		} catch (error) {
+		const userLogin = await logInWithEmailAndPassword(
+			credentials.email,
+			credentials.password
+		);
+
+		if (!userLogin) {
 			setError(true);
 			dispatch(setUserLoginFailure());
+		} else {
+			const userEmail = jwt_decode(userLogin);
+			dispatch(setUserLogged(userEmail?.email));
+			navigate('/');
 		}
 	};
 

@@ -5,6 +5,7 @@ export type User = {
 
 export type UserState = {
 	isLogged: boolean;
+	error: boolean;
 	user: User | null;
 };
 
