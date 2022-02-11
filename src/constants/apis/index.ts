@@ -4,5 +4,5 @@ export const API_UNSPLASH = {
 };
 
 export const API_JSONPLACEHOLDER = {
-	BASE_URL: 'https://jsonplaceholder.typicode.com/',
+	BASE_URL: 'https://jsonplaceholder.typicode.com',
 };
