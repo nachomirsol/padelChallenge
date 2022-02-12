@@ -9,6 +9,8 @@ import {
 	UPDATE_PHOTO_LIKES_SUCCESS,
 } from '../actionTypes';
 
+const initialState = { loading: false, error: false, photos: [] };
+
 const setUpdateLike = (state: any, action: any) => {
 	const indexOfPhotoToEdit = state.findIndex(
 		(photo: any) => photo.id === action.payload.id
@@ -19,7 +21,7 @@ const setUpdateLike = (state: any, action: any) => {
 	return photoList;
 };
 
-const photosReducer = (state = { photos: [] }, action: any): any => {
+const photosReducer = (state = initialState, action: any): any => {
 	switch (action.type) {
 		case PHOTO_LIST_REQUEST:
 			return { loading: true, error: false, photos: [] };

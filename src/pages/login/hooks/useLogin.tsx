@@ -39,7 +39,7 @@ export const useLogin = () => {
 		} else {
 			const userEmail = jwt_decode(userLogin);
 			dispatch(setUserLogged(userEmail?.email));
-			navigate('/');
+			navigate('/dashboard');
 		}
 	};
 

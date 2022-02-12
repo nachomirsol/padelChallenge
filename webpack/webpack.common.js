@@ -5,21 +5,25 @@ const Dotenv = require('dotenv-webpack');
 
 module.exports = () => {
 	return {
-		entry: './src/index.tsx',
+		entry: path.resolve(__dirname, '..', './src/index.tsx'),
+		output: {
+			path: path.resolve(__dirname, '..', './build'),
+			filename: 'bundle.js',
+		},
 		resolve: {
 			extensions: ['.ts', '.tsx', '.js'],
 			alias: {
-				components: path.resolve(__dirname, 'src/components/'),
-				pages: path.resolve(__dirname, 'src/pages/'),
-				routes: path.resolve(__dirname, 'src/routes/'),
-				store: path.resolve(__dirname, 'src/store/'),
-				api: path.resolve(__dirname, 'src/api/'),
-				lib: path.resolve(__dirname, 'src/lib/'),
-				utils: path.resolve(__dirname, 'src/utils/'),
-				models: path.resolve(__dirname, 'src/models/'),
-				constants: path.resolve(__dirname, 'src/constants/'),
-				styles: path.resolve(__dirname, 'src/styles/'),
-				assets: path.resolve(__dirname, 'src/assets/'),
+				components: path.resolve(__dirname, '..', './src/components/'),
+				pages: path.resolve(__dirname, '..', 'src/pages/'),
+				routes: path.resolve(__dirname, '..', 'src/routes/'),
+				store: path.resolve(__dirname, '..', 'src/store/'),
+				api: path.resolve(__dirname, '..', 'src/api/'),
+				lib: path.resolve(__dirname, '..', 'src/lib/'),
+				utils: path.resolve(__dirname, '..', 'src/utils/'),
+				models: path.resolve(__dirname, '..', 'src/models/'),
+				constants: path.resolve(__dirname, '..', 'src/constants/'),
+				styles: path.resolve(__dirname, '..', 'src/styles/'),
+				assets: path.resolve(__dirname, '..', 'src/assets/'),
 			},
 		},
 		devServer: {

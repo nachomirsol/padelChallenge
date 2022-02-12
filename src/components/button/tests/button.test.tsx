@@ -9,6 +9,7 @@ describe('Button component', () => {
 	const props = {
 		height: '60px',
 		label: 'text',
+		disabled: false,
 		onClick: jest.fn(),
 	};
 
