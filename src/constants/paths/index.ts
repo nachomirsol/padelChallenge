@@ -1,5 +1,5 @@
 export const ROUTEPATHS = {
-	DASHBOARD: '',
+	DASHBOARD: '/dashboard',
 	LOGIN: '/login',
 	SETTINGS: '/settings',
 };

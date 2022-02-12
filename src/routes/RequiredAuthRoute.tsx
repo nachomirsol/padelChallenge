@@ -8,10 +8,8 @@ import { checkLocalStorage } from 'utils/localStorage';
 export const RequireAuth: React.FC<{ children: JSX.Element }> = ({
 	children,
 }) => {
-	const isLogged =
-		useSelector((state) => state?.user.isLogged) ||
-		jwt_decode(checkLocalStorage())?.email;
-
+	const isLogged = useSelector((state) => state?.user.isLogged);
+	//||jwt_decode(checkLocalStorage())?.email;
 	if (!isLogged) {
 		return <Navigate to='/login' />;
 	}

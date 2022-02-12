@@ -12,6 +12,7 @@ import {
 	TODO_LIST_SUCCESS,
 	TODO_UPDATE_ITEM,
 } from '../actionTypes';
+import { TodoActions } from '../types';
 
 export const getTodoList = (
 	userId: number
@@ -35,14 +36,14 @@ export const getTodoList = (
 	};
 };
 
-export const updateTodoItem = (id: number) => {
+export const updateTodoItem = (id: number): TodoActions => {
 	return {
 		type: TODO_UPDATE_ITEM,
 		payload: id,
 	};
 };
 
-export const deleteTodoItem = (id: number) => {
+export const deleteTodoItem = (id: number): TodoActions => {
 	return {
 		type: TODO_DELETE_ITEM,
 		payload: id,

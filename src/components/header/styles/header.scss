@@ -31,6 +31,12 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			span {
+				margin: 0 $spacing-xs;
+				&.active {
+					font-weight: $font-weight-bold;
+				}
+			}
 			.userInfo {
 				display: flex;
 				flex-direction: column;

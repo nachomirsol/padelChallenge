@@ -1,17 +1,12 @@
-export type User = {
-	email: string;
-	name: string | any;
-};
-
 export type UserState = {
 	isLogged: boolean;
 	error: boolean;
-	user: User | null;
+	user: string | null;
 };
 
 export type SetUserLoggedAction = {
 	type: string;
-	payload: User;
+	payload: string;
 };
 
 export type SetUserLoginFailureAction = {

@@ -10,3 +10,16 @@ export type TodoItem = {
 	description: string;
 	completed: boolean;
 };
+
+
+export type TodoAction = {
+	type: string;
+	payload: number;
+};
+
+export type TodoListAction = {
+	type: string;
+	payload: TodoItem[];
+};
+
+export type TodoActions = TodoAction | TodoListAction;

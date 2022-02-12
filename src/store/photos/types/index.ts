@@ -1,21 +1,24 @@
-export type Photos = {
-	email: string;
-	name: string;
-};
-
 export type PhotoState = {
-	isLogged: boolean;
-	user: User | null;
+	loading: boolean;
+	error: boolean;
+	photos: any[];
 };
 
+export type PhotoActions = {
+	type: string;
+	payload: any;
+};
 
-export type SetUserLoggedAction = {
-    type: string
-    payload: User
-}
-
-export type SetUserLoginFailureAction = {
-    type: string
-}
-
-export type UserActions = SetUserLoggedAction | SetUserLoginFailureAction
+type UserPhoto = {
+	first_name: string;
+};
+type UrlPhoto = {
+	regular: string;
+};
+export type Photo = {
+	id: string;
+	likes: number;
+	user: UserPhoto;
+	description: string | null;
+	urls: UrlPhoto;
+};

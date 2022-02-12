@@ -2,6 +2,6 @@ export type ButtonProps = {
 	label: string;
 	width?: string;
 	height?: string;
-	disabled: boolean;
+	disabled?: boolean;
 	onClick: () => void;
 };

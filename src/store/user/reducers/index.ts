@@ -12,6 +12,7 @@ const userReducer = (state: UserState = initialState, action: UserActions) => {
 		case USER_LOGIN_SUCCESS:
 			return {
 				user: action.payload,
+				isLogged: true,
 			};
 		case USER_LOGIN_FAIL:
 			return {

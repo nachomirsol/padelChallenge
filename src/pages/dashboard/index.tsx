@@ -1,51 +1,21 @@
 /** Components */
 import { Searchbar } from 'components/searchbar';
 import { Button } from 'components/button';
-import { Card } from 'components/card';
-import { Loading } from 'components/loading';
-import { NoData } from 'components/noData';
-/** Types */
-import { PhotoListType } from './types';
 /** Hooks */
 import { useDashboard } from './hooks/useDashboard';
 /** Styles */
 import './styles/dashboard.scss';
+import { PhotoListItems } from 'components/photoListItems';
 
 export const Dashboard: React.FC = () => {
 	const {
 		query,
 		loading,
 		photos,
-		updateLikes,
 		handleChange,
 		handleSearchClick,
 		loadMoreContent,
 	} = useDashboard();
-
-	const renderPhotoList = () => {
-		if (loading) {
-			return <Loading />;
-		}
-		if (photos.length === 0) {
-			return <NoData label={'No data Found'} />;
-		}
-
-		return photos.map(
-			({ id, description, urls, user, likes }: PhotoListType) => {
-				return (
-					<Card
-						id={id}
-						key={id}
-						title={user?.first_name ?? 'photo title'}
-						description={description || 'description'}
-						likes={likes}
-						imgUrl={urls.regular}
-						onClick={() => updateLikes(id)}
-					/>
-				);
-			}
-		);
-	};
 
 	return (
 		<div className='dashboard' role='dashboard'>
@@ -63,19 +33,16 @@ export const Dashboard: React.FC = () => {
 					width={'100px'}
 					label={'Filter'}
 					height={'auto'}
-					disabled={false}
 					onClick={() => handleSearchClick(query)}
 				/>
 			</div>
-
-			<div className={`dashboard__content ${loading && 'loadContent'}`}>
-				{renderPhotoList()}
+			<div className='dashboard__content'>
+				<PhotoListItems
+					loading={loading}
+					photos={photos}
+					loadMore={loadMoreContent}
+				/>
 			</div>
-			{photos.length > 0 && (
-				<div className='dashboard__loadMore' onClick={loadMoreContent}>
-					Load More
-				</div>
-			)}
 		</div>
 	);
 };

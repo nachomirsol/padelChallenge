@@ -1,5 +1,6 @@
 /** Libraries */
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 /** Constants */
 import { ROUTES } from 'models/routes';
@@ -14,9 +15,11 @@ import { UserIcon } from 'assets/icons/user';
 import './styles/header.scss';
 
 export const Header = () => {
-	const email = jwt_decode(checkLocalStorage())?.email;
+	// const email = jwt_decode(checkLocalStorage())?.email || '';
+	const email = 'fakeEmail';
+	const currentLocation = useLocation();
 	return (
-		<div className='header'>
+		<div className='header' role='header'>
 			<div className='header__content'>
 				<h1>
 					<Link to={'/'}>Playtomic</Link>
@@ -25,7 +28,12 @@ export const Header = () => {
 					{ROUTES.filter((route: RouteType) => route.isNavbar === true).map(
 						({ id, label, path }) => {
 							return (
-								<span key={id}>
+								<span
+									key={id}
+									className={`${
+										currentLocation.pathname === path ? 'active' : ''
+									}`}
+								>
 									<Link to={path}>{label}</Link>
 								</span>
 							);
