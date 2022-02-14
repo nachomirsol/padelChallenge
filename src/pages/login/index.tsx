@@ -17,7 +17,7 @@ export const Login: React.FC = () => {
 	} = useLogin();
 
 	return (
-		<div className='login'>
+		<div className='login' role='login'>
 			<img src={LOGO_PLAYTOMIC} alt='logo playtomic' />
 			<div className='login__form'>
 				<Input

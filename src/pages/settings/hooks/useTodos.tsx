@@ -1,4 +1,4 @@
-import { useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import {
@@ -8,6 +8,7 @@ import {
 } from 'store/todos/actions';
 
 export const useTodos = () => {
+	const [isModalOpen, setIsModalOpen] = useState(false);
 	const dispatch = useDispatch();
 	const { loading, todos, error } = useSelector((state) => state?.todos);
 	useEffect(() => {
@@ -26,7 +27,10 @@ export const useTodos = () => {
 		loading,
 		todos,
 		error,
+		isModalOpen,
+		setIsModalOpen,
 		updateItem,
 		deleteItem,
+		getTodoList,
 	};
 };

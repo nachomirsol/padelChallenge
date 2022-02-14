@@ -3,8 +3,8 @@ import jwt_decode from 'jwt-decode';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+/** Api */
 import { logInWithEmailAndPassword } from 'api/auth';
-
 /** Actions */
 import { setUserLogged, setUserLoginFailure } from 'store/user/actions';
 
