@@ -1,6 +1,6 @@
 /** Libraries */
 import { screen } from '@testing-library/react';
-
+import user from '@testing-library/user-event';
 import { renderWithRedux } from 'utils/tests';
 import '@testing-library/jest-dom/extend-expect';
 /** Components */

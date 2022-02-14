@@ -25,7 +25,7 @@ export const TodoListItems = ({
 		<>
 			{todos.map(({ id, title, completed }: TodoListItemTypes) => {
 				return (
-					<div className='item' key={id}>
+					<div className='item' key={id} role='list-item'>
 						<div className='item__content'>
 							<div className={`item__content-title ${completed && 'marked'}`}>
 								{id}- {title}
@@ -44,7 +44,7 @@ export const TodoListItems = ({
 						</div>
 
 						<div className='item__actions'>
-							<span onClick={() => deleteItem(id)}>
+							<span onClick={() => deleteItem(id)} role='delete'>
 								<DeleteIcon />
 							</span>
 						</div>

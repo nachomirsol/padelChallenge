@@ -4,7 +4,7 @@ import { TodoListItems } from 'components/todoListItems';
 import { Modal } from 'components/modal';
 import { Input } from 'components/input';
 /** Hooks */
-import { useTodos } from './hooks/useTodos';
+import { useTodos } from '../../hooks/useTodos';
 /** Styles */
 import './styles/settings.scss';
 
@@ -26,6 +26,7 @@ export const Settings = () => {
 			<div className='settings__header'>
 				<div className='settings__header-title'>TODO LIST</div>
 				<div
+					role='addItem'
 					className='settings__header-actions'
 					onClick={() => setIsModalOpen(true)}
 				>

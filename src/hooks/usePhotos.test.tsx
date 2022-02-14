@@ -1,6 +1,6 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 
-import { useDashboard } from '../hooks/useDashboard';
+import { useDashboard } from './usePhotos';
 
 let storeRedux = {
 	loading: false,
@@ -29,5 +29,12 @@ describe('useDashboard hook', () => {
 		expect(mockDispatch).toHaveBeenCalledTimes(2);
 	});
 
-	
+	test('It should call load more content action', () => {
+		const { result } = renderHook(() => useDashboard());
+		act(() => {
+			result.current.loadMoreContent();
+		});
+
+		expect(mockDispatch).toHaveBeenCalledTimes(4);
+	});
 });
