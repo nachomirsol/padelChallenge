@@ -32,8 +32,9 @@ export const useTodos = () => {
 	};
 
 	const saveItem = () => {
+		const lastTodoId = todos[todos.length - 1]?.id ?? 0;
 		let item = {
-			id: todos.length + 1,
+			id: lastTodoId + 1,
 			userId: USER_ID,
 			completed: false,
 			title: '',

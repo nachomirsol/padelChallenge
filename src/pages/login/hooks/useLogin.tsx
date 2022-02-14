@@ -4,9 +4,13 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 /** Api */
-import { logInWithEmailAndPassword } from 'api/auth';
+import { logInWithEmailAndPassword, logout } from 'api/auth';
 /** Actions */
-import { setUserLogged, setUserLoginFailure } from 'store/user/actions';
+import {
+	setUserLogged,
+	setUserLoginFailure,
+	setUserLogout,
+} from 'store/user/actions';
 
 export const useLogin = () => {
 	const [credentials, setCredentials] = useState({
@@ -43,10 +47,17 @@ export const useLogin = () => {
 		}
 	};
 
+	const handleLogout = () => {
+		logout();
+		dispatch(setUserLogout());
+		navigate('/login');
+	};
+
 	return {
 		credentials,
 		handleChange,
 		handleSubmit,
 		error,
+		handleLogout,
 	};
 };

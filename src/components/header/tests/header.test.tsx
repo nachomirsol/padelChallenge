@@ -5,10 +5,11 @@ import '@testing-library/jest-dom/extend-expect';
 import user from '@testing-library/user-event';
 /** Components */
 import { Header } from '..';
+import { renderWithRedux } from 'utils/tests';
 
 describe('Header component', () => {
 	it('Should render component', () => {
-		render(
+		renderWithRedux(
 			<BrowserRouter>
 				<Header />
 			</BrowserRouter>
@@ -20,7 +21,7 @@ describe('Header component', () => {
 	});
 
 	it('Should render settings link and redirect to it ', () => {
-		render(
+		renderWithRedux(
 			<BrowserRouter>
 				<Header />
 			</BrowserRouter>
@@ -35,7 +36,7 @@ describe('Header component', () => {
 	});
 
 	it('Should render with active class on click link ', () => {
-		render(
+		renderWithRedux(
 			<BrowserRouter>
 				<Header />
 			</BrowserRouter>

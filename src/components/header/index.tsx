@@ -10,20 +10,31 @@ import { checkLocalStorage } from 'utils/localStorage';
 import { RouteType } from 'types/routes';
 /** Assets */
 import { UserIcon } from 'assets/icons/user';
-
+/** Hooks */
+import { useLogin } from 'pages/login/hooks/useLogin';
 /** Styles */
 import './styles/header.scss';
 
 export const Header = () => {
+	const { handleLogout } = useLogin();
 	// const email = jwt_decode(checkLocalStorage())?.email || '';
 	const email = 'fakeEmail';
 	const currentLocation = useLocation();
 	return (
 		<div className='header' role='header'>
 			<div className='header__content'>
-				<h1>
-					<Link to={'/'}>Playtomic</Link>
-				</h1>
+				<div className='title'>
+					<div className='userInfo'>
+						<span>
+							<UserIcon />
+						</span>
+						<span>{email}</span>
+					</div>
+					<h1>
+						<Link to={'/'}>Playtomic</Link>
+					</h1>
+				</div>
+
 				<div className='header__content-links'>
 					{ROUTES.filter((route: RouteType) => route.isNavbar === true).map(
 						({ id, label, path }) => {
@@ -40,13 +51,9 @@ export const Header = () => {
 						}
 					)}
 
-					<div className='userInfo'>
-						<span>
-							<UserIcon />
-						</span>
-						<span>{email}</span>
+					<div className='logout' onClick={handleLogout}>
+						logout
 					</div>
-					<div className='logout'>logout</div>
 				</div>
 			</div>
 		</div>
