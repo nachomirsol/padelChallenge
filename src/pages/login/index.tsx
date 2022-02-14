@@ -8,7 +8,7 @@ import LOGO_PLAYTOMIC from 'assets/logo/logo-playtomic.png';
 /** Styles */
 import './styles/login.scss';
 
-export const Login: React.FC = () => {
+export const Login = () => {
 	const {
 		credentials: { email, password },
 		handleChange,
@@ -17,7 +17,7 @@ export const Login: React.FC = () => {
 	} = useLogin();
 
 	return (
-		<div className='login'>
+		<div className='login' role='login'>
 			<img src={LOGO_PLAYTOMIC} alt='logo playtomic' />
 			<div className='login__form'>
 				<Input

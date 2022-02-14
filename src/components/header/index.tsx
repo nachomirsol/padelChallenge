@@ -46,6 +46,7 @@ export const Header = () => {
 						</span>
 						<span>{email}</span>
 					</div>
+					<div className='logout'>logout</div>
 				</div>
 			</div>
 		</div>

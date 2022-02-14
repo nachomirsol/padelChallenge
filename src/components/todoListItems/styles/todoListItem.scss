@@ -3,10 +3,11 @@
 .item {
 	width: 100%;
 	display: flex;
+	justify-content: space-between;
 	align-items: center;
 	margin: $spacing-xs 0;
 	&__content {
-		width: 80%;
+		width: 100%;
 		height: 40px;
 		display: flex;
 		align-items: center;
@@ -59,13 +60,12 @@
 		}
 	}
 	&__actions {
-		width: 20%;
 		display: flex;
 		margin: 0 $spacing-xs;
 		svg {
 			margin: 0 $spacing-xxs;
 			cursor: pointer;
-			color: #e37272;
+			color: $color-error;
 		}
 	}
 }

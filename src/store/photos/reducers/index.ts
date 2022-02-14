@@ -8,20 +8,14 @@ import {
 	PHOTO_LIST_SUCCESS,
 	UPDATE_PHOTO_LIKES_SUCCESS,
 } from '../actionTypes';
+import { PhotoActions, PhotoState } from '../types';
 
 const initialState = { loading: false, error: false, photos: [] };
 
-const setUpdateLike = (state: any, action: any) => {
-	const indexOfPhotoToEdit = state.findIndex(
-		(photo: any) => photo.id === action.payload.id
-	);
-	const photoList = [...state];
-	photoList[indexOfPhotoToEdit] = action.payload;
-
-	return photoList;
-};
-
-const photosReducer = (state = initialState, action: any): any => {
+const photosReducer = (
+	state = initialState,
+	action: PhotoActions
+): PhotoState => {
 	switch (action.type) {
 		case PHOTO_LIST_REQUEST:
 			return { loading: true, error: false, photos: [] };
@@ -34,12 +28,9 @@ const photosReducer = (state = initialState, action: any): any => {
 
 		case LOAD_MORE_DATA_SUCCESS: {
 			return {
-				photos: state.photos.concat(action.payload),
+				photos: [...state.photos, ...action.payload],
 			};
 		}
-
-		case UPDATE_PHOTO_LIKES_SUCCESS:
-			return setUpdateLike(state, action);
 
 		case FILTER_PHOTO_LIST_REQUEST:
 			return { loading: true, error: false, photos: [] };

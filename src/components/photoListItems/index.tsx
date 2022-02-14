@@ -3,11 +3,15 @@ import { Card } from 'components/card';
 import { Loading } from 'components/loading';
 import { NoData } from 'components/noData';
 /** Types */
-import { PhotoListType } from 'pages/dashboard/types';
+import { PhotoListType, PhotoListTypes } from './types';
 /** Styles */
 import './styles/photoListItems.scss';
 
-export const PhotoListItems = ({ loading, photos, loadMore }: any) => {
+export const PhotoListItems = ({
+	loading,
+	photos,
+	loadMore,
+}: PhotoListTypes) => {
 	if (loading) {
 		return <Loading />;
 	}

@@ -10,9 +10,9 @@ export const RequireAuth: React.FC<{ children: JSX.Element }> = ({
 }) => {
 	const isLogged = useSelector((state) => state?.user.isLogged);
 	//||jwt_decode(checkLocalStorage())?.email;
-	if (!isLogged) {
-		return <Navigate to='/login' />;
-	}
+	// if (!isLogged) {
+	// 	return <Navigate to='/login' />;
+	// }
 
 	return children;
 };

@@ -1,3 +1,4 @@
+import { ReactElement, PropsWithChildren } from 'react';
 import { render } from '@testing-library/react';
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -5,7 +6,7 @@ import { Provider } from 'react-redux';
 import { rootReducer } from 'store/rootReducer';
 import thunk from 'redux-thunk';
 
-const wrapper = ({ children }: any) => {
+const wrapper = ({ children }: PropsWithChildren<{}>) => {
 	return (
 		<Provider store={createStore(rootReducer, applyMiddleware(thunk))}>
 			{children}
@@ -14,14 +15,14 @@ const wrapper = ({ children }: any) => {
 };
 
 const renderWithRedux = (
-	ui: any,
+	ui: ReactElement,
 	{
 		initialState,
 		store = createStore(rootReducer, applyMiddleware(thunk)),
 		...renderOptions
 	}: any = {}
 ) => {
-	const Wrapper = ({ children }: any) => {
+	const Wrapper = ({ children }: PropsWithChildren<{}>) => {
 		return <Provider store={store}>{children}</Provider>;
 	};
 	return render(ui, { wrapper: Wrapper, ...renderOptions });

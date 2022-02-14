@@ -17,3 +17,11 @@ export const logInWithEmailAndPassword = async (
 		console.error(err);
 	}
 };
+
+export const logout = async () => {
+	try {
+		await signOut(auth);
+	} catch (err) {
+		console.error(err);
+	}
+};

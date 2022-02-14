@@ -8,12 +8,26 @@
 	flex-direction: column;
 	margin-left: auto;
 	margin-right: auto;
-	&__title {
-		color: $color-main;
-		font-size: $font-size-xl;
-		font-weight: $font-weight-semiBold;
-		padding: $spacing-xl;
+	&__header {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 $spacing-xl;
+		&-title {
+			color: $color-main;
+			font-size: $font-size-xl;
+			font-weight: $font-weight-semiBold;
+			padding: $spacing-xl 0;
+		}
+		&-actions {
+			cursor: pointer;
+			svg {
+				color: $color-main;
+			}
+		}
 	}
+
 	&__content {
 		padding: 0 $spacing-xl;
 		width: 100%;
