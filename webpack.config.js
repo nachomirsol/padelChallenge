@@ -14,6 +14,7 @@ module.exports = () => {
 				routes: path.resolve(__dirname, 'src/routes/'),
 				store: path.resolve(__dirname, 'src/store/'),
 				api: path.resolve(__dirname, 'src/api/'),
+				hooks: path.resolve(__dirname, 'src/hooks/'),
 				lib: path.resolve(__dirname, 'src/lib/'),
 				utils: path.resolve(__dirname, 'src/utils/'),
 				models: path.resolve(__dirname, 'src/models/'),

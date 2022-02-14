@@ -11,7 +11,7 @@ import { RouteType } from 'types/routes';
 /** Assets */
 import { UserIcon } from 'assets/icons/user';
 /** Hooks */
-import { useLogin } from 'pages/login/hooks/useLogin';
+import { useLogin } from 'hooks/useLogin';
 /** Styles */
 import './styles/header.scss';
 

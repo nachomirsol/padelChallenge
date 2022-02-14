@@ -57,5 +57,6 @@ export const useTodos = () => {
 		updateItem,
 		deleteItem,
 		getTodoList,
+		deleteTodoItem
 	};
 };

@@ -2,7 +2,7 @@
 import { Button } from 'components/button';
 import { Input } from 'components/input';
 /** Hooks */
-import { useLogin } from './hooks/useLogin';
+import { useLogin } from '../../hooks/useLogin';
 /** Assets */
 import LOGO_PLAYTOMIC from 'assets/logo/logo-playtomic.png';
 /** Styles */

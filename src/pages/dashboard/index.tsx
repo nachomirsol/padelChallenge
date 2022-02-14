@@ -2,7 +2,7 @@
 import { Searchbar } from 'components/searchbar';
 import { Button } from 'components/button';
 /** Hooks */
-import { useDashboard } from './hooks/useDashboard';
+import { useDashboard } from '../../hooks/usePhotos';
 /** Styles */
 import './styles/dashboard.scss';
 import { PhotoListItems } from 'components/photoListItems';
