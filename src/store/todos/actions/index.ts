@@ -6,13 +6,14 @@ import { AnyAction, Dispatch } from 'redux';
 import { getTodos } from 'api/todos';
 /** Action types */
 import {
+	TODO_ADD_ITEM,
 	TODO_DELETE_ITEM,
 	TODO_LIST_FAIL,
 	TODO_LIST_REQUEST,
 	TODO_LIST_SUCCESS,
 	TODO_UPDATE_ITEM,
 } from '../actionTypes';
-import { TodoActions } from '../types';
+import { TodoActions, TodoItem } from '../types';
 
 export const getTodoList = (
 	userId: number
@@ -33,6 +34,13 @@ export const getTodoList = (
 				payload: 'error',
 			});
 		}
+	};
+};
+
+export const addTodoItem = (item: TodoItem): TodoActions => {
+	return {
+		type: TODO_ADD_ITEM,
+		payload: item,
 	};
 };
 

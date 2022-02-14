@@ -42,7 +42,10 @@
 				flex-direction: column;
 				justify-content: center;
 				align-items: center;
-				padding: 0$spacing-l;
+				padding: 0 $spacing-l;
+			}
+			.logout {
+				color: $color-white;
 			}
 		}
 	}

@@ -12,8 +12,11 @@ export const Settings = () => {
 	const {
 		loading,
 		todos,
+		itemName,
 		isModalOpen,
 		setIsModalOpen,
+		handleChange,
+		saveItem,
 		updateItem,
 		deleteItem,
 	} = useTodos();
@@ -46,6 +49,7 @@ export const Settings = () => {
 					setModalIsOpen={setIsModalOpen}
 					confirmationButtonText={'Save'}
 					cancelButtonText={'Close'}
+					handleConfirmAction={saveItem}
 					handleCancelAction={() => setIsModalOpen(false)}
 				>
 					<Input
@@ -54,8 +58,8 @@ export const Settings = () => {
 						width={'50%'}
 						height={'40px'}
 						name={'search'}
-						onChange={() => ({})}
-						value={'asas'}
+						onChange={handleChange}
+						value={itemName}
 					/>
 				</Modal>
 			)}

@@ -21,10 +21,12 @@
 		height: auto;
 		margin: 1.75rem auto;
 		opacity: 1;
+
 		&__header {
 			width: 100%;
 			display: flex;
 			justify-content: space-between;
+			padding: $spacing-m;
 			background-color: $color-main;
 			svg {
 				cursor: pointer;
@@ -42,14 +44,14 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			background-color: $color-background-light;
+			background-color: $color-background-white;
 			color: $color-text-gray;
 		}
 		&__buttons {
 			display: flex;
 			justify-content: flex-end;
 			width: 100%;
-			background-color: $color-border-gray;
+			background-color: $color-background-light;
 
 			button {
 				margin-left: $spacing-m;
@@ -60,8 +62,4 @@
 
 .modal:empty {
 	display: none;
-}
-
-.modal > div {
-	padding: 16px;
 }

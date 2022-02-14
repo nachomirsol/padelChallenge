@@ -8,7 +8,7 @@ import LOGO_PLAYTOMIC from 'assets/logo/logo-playtomic.png';
 /** Styles */
 import './styles/login.scss';
 
-export const Login: React.FC = () => {
+export const Login = () => {
 	const {
 		credentials: { email, password },
 		handleChange,

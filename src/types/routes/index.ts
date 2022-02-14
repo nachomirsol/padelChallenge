@@ -2,7 +2,7 @@ export type RouteType = {
 	id: string;
 	path: string;
 	isPrivate: boolean;
-	component: any;
+	component: React.FC;
 	label: string;
 	isNavbar: boolean;
 	allowedRoles: Array<string>;

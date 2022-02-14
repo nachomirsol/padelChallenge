@@ -1,12 +1,17 @@
 export type PhotoState = {
-	loading: boolean;
-	error: boolean;
+	loading?: boolean;
+	error?: boolean;
 	photos: any[];
 };
 
 export type PhotoActions = {
 	type: string;
-	payload: any;
+	payload: any[];
+};
+
+export type PhotoActionsError = {
+	type: string;
+	payload: string;
 };
 
 type UserPhoto = {

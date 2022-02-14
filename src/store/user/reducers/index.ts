@@ -1,5 +1,5 @@
 import { USER_LOGIN_FAIL, USER_LOGIN_SUCCESS } from '../actionTypes';
-import { UserActions, UserState } from '../types';
+import { SetUserLoggedAction, UserActions, UserState } from '../types';
 
 const initialState: UserState = {
 	isLogged: false,
@@ -7,7 +7,10 @@ const initialState: UserState = {
 	user: null,
 };
 
-const userReducer = (state: UserState = initialState, action: UserActions) => {
+const userReducer = (
+	state: UserState = initialState,
+	action: SetUserLoggedAction
+) => {
 	switch (action.type) {
 		case USER_LOGIN_SUCCESS:
 			return {

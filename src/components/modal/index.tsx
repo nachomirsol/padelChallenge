@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 /** Libraries */
 import { createPortal } from 'react-dom';
 import { DeleteIcon } from 'assets/icons/delete';
@@ -8,7 +9,9 @@ import { ModalTypes } from './types';
 /** Styles */
 import './styles/modal.scss';
 
-const modalRoot = document.getElementById('modal-root');
+let modalRoot = document.createElement('div');
+modalRoot.setAttribute('id', 'modal-root');
+document.body.appendChild(modalRoot);
 
 export const Modal = ({
 	isOpen,
@@ -21,53 +24,54 @@ export const Modal = ({
 	handleCancelAction,
 	hasCloseIcon = true,
 }: ModalTypes) => {
-	return modalRoot && isOpen
-		? createPortal(
-				<div className='modal__container'>
-					<div className='modal'>
-						<div className='modal__header'>
-							<span>{modalTitle}</span>
-							{hasCloseIcon && (
-								<span
+	return (
+		isOpen &&
+		createPortal(
+			<div className='modal__container'>
+				<div className='modal'>
+					<div className='modal__header'>
+						<span>{modalTitle}</span>
+						{hasCloseIcon && (
+							<span
+								onClick={() => {
+									handleCancelAction && handleCancelAction();
+									setModalIsOpen(false);
+								}}
+							>
+								<DeleteIcon />
+							</span>
+						)}
+					</div>
+					<div className='modal__body'>{children}</div>
+					{(confirmationButtonText || cancelButtonText) && (
+						<div className='modal__buttons'>
+							{cancelButtonText && (
+								<Button
+									width={'100px'}
+									height={'40px'}
+									label={cancelButtonText}
 									onClick={() => {
 										handleCancelAction && handleCancelAction();
 										setModalIsOpen(false);
 									}}
-								>
-									<DeleteIcon />
-								</span>
+								/>
+							)}
+							{confirmationButtonText && (
+								<Button
+									width={'100px'}
+									height={'40px'}
+									label={confirmationButtonText}
+									onClick={() => {
+										handleConfirmAction && handleConfirmAction();
+										setModalIsOpen(false);
+									}}
+								/>
 							)}
 						</div>
-						<div className='modal__body'>{children}</div>
-						{(confirmationButtonText || cancelButtonText) && (
-							<div className='modal__buttons'>
-								{cancelButtonText && (
-									<Button
-										width={'30%'}
-										height={'30%'}
-										label={cancelButtonText}
-										onClick={() => {
-											handleCancelAction && handleCancelAction();
-											setModalIsOpen(false);
-										}}
-									/>
-								)}
-								{confirmationButtonText && (
-									<Button
-										width={'30%'}
-										height={'30%'}
-										label={confirmationButtonText}
-										onClick={() => {
-											handleConfirmAction && handleConfirmAction();
-											setModalIsOpen(false);
-										}}
-									/>
-								)}
-							</div>
-						)}
-					</div>
-				</div>,
-				modalRoot
-		  )
-		: null;
+					)}
+				</div>
+			</div>,
+			modalRoot
+		)
+	);
 };

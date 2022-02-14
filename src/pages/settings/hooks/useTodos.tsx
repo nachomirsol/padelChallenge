@@ -5,14 +5,18 @@ import {
 	deleteTodoItem,
 	getTodoList,
 	updateTodoItem,
+	addTodoItem,
 } from 'store/todos/actions';
+
+const USER_ID = 1;
 
 export const useTodos = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [itemName, setItemName] = useState('');
 	const dispatch = useDispatch();
 	const { loading, todos, error } = useSelector((state) => state?.todos);
 	useEffect(() => {
-		dispatch(getTodoList(1));
+		dispatch(getTodoList(USER_ID));
 	}, []);
 
 	const updateItem = (id: number) => {
@@ -23,12 +27,32 @@ export const useTodos = () => {
 		dispatch(deleteTodoItem(id));
 	};
 
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setItemName(e.target.value);
+	};
+
+	const saveItem = () => {
+		let item = {
+			id: todos.length + 1,
+			userId: USER_ID,
+			completed: false,
+			title: '',
+		};
+		if (itemName !== '') {
+			item.title = itemName;
+			dispatch(addTodoItem(item));
+		}
+	};
+
 	return {
 		loading,
 		todos,
 		error,
+		itemName,
 		isModalOpen,
 		setIsModalOpen,
+		handleChange,
+		saveItem,
 		updateItem,
 		deleteItem,
 		getTodoList,

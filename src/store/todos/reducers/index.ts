@@ -4,8 +4,9 @@ import {
 	TODO_LIST_REQUEST,
 	TODO_LIST_SUCCESS,
 	TODO_UPDATE_ITEM,
+	TODO_ADD_ITEM,
 } from '../actionTypes';
-import { TodoItem, TodoState } from '../types';
+import { TodoActions, TodoItem, TodoState } from '../types';
 
 const initialState: TodoState = {
 	todos: [],
@@ -13,7 +14,13 @@ const initialState: TodoState = {
 	error: false,
 };
 
-const updateTodoItem = (state: TodoItem[], action: any): TodoItem[] => {
+const addItem = (state: TodoItem[], action: TodoActions): TodoItem[] => {
+	const todoList = [...state, action.payload];
+
+	return todoList;
+};
+
+const updateTodoItem = (state: TodoItem[], action: TodoActions): TodoItem[] => {
 	const indexOfTodoItem = state.findIndex(
 		(todoItem: TodoItem) => todoItem.id === action.payload
 	);
@@ -23,7 +30,7 @@ const updateTodoItem = (state: TodoItem[], action: any): TodoItem[] => {
 	return todoList;
 };
 
-const deleteTodoItem = (state: TodoItem[], action: any): TodoItem[] => {
+const deleteTodoItem = (state: TodoItem[], action: TodoActions): TodoItem[] => {
 	const todoList = [...state];
 	const todoListWithDeletedItem = todoList.filter(
 		(item) => item.id !== action.payload
@@ -32,7 +39,7 @@ const deleteTodoItem = (state: TodoItem[], action: any): TodoItem[] => {
 	return todoListWithDeletedItem;
 };
 
-const todosReducer = (state: TodoState = initialState, action: any) => {
+const todosReducer = (state: TodoState = initialState, action: TodoActions) => {
 	switch (action.type) {
 		case TODO_LIST_REQUEST:
 			return {
@@ -55,6 +62,10 @@ const todosReducer = (state: TodoState = initialState, action: any) => {
 		case TODO_UPDATE_ITEM:
 			return {
 				todos: updateTodoItem(state.todos, action),
+			};
+		case TODO_ADD_ITEM:
+			return {
+				todos: addItem(state.todos, action),
 			};
 		case TODO_DELETE_ITEM:
 			return {

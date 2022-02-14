@@ -7,14 +7,13 @@ export type TodoState = {
 export type TodoItem = {
 	userId: number;
 	id: number;
-	description: string;
+	title: string;
 	completed: boolean;
 };
 
-
 export type TodoAction = {
 	type: string;
-	payload: number;
+	payload: number | TodoItem;
 };
 
 export type TodoListAction = {
