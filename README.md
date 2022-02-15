@@ -18,7 +18,7 @@ The application is developed with React and TypeScript using webpack.
 
 - npm install
 - <pre><code>npm run dev</code></pre>
-- Env variables:
+- Env variables: In an .env file place these keys
 
 <pre><code>REACT_APP_API_ACCESS_KEY=KlC0ZA-aUyU9p2NE-Vp1S_2zUkUf-xntB-SvDmZM4A0
 REACT_APP_API_SECRET_KEY=jxjDqJkVtCRMbx_39E3sbF-1QNA-BHXd2v1OzpBCrMw
