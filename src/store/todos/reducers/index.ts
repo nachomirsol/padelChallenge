@@ -14,7 +14,7 @@ const initialState: TodoState = {
 	error: false,
 };
 
-const addItem = (state: TodoItem[], action: TodoActions): TodoItem[] => {
+const addItem = (state: TodoItem[], action: TodoActions) => {
 	const todoList = [...state, action.payload];
 
 	return todoList;
