@@ -27,9 +27,6 @@ export const Header = () => {
 						</span>
 						<span>{email}</span>
 					</div>
-					<h1>
-						<Link to={'/'}>Playtomic</Link>
-					</h1>
 				</div>
 
 				<div className='header__content-links'>
