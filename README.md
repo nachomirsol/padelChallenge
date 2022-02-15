@@ -2,7 +2,7 @@
 
 The application is developed with React and TypeScript using webpack.
 
-**Live version:** https://nachomirsol.github.io
+**Live version:** https://nachomirsol.github.io || https://defiant-twig.surge.sh/
 
 ## MAIN STACK
 
