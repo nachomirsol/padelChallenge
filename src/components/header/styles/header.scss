@@ -13,18 +13,46 @@
 		justify-content: space-between;
 		align-items: center;
 		padding: 0 $spacing-xl;
-		h1 {
+		.title {
+			display: flex;
+			.userInfo {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				padding: 0 $spacing-l;
+			}
+			h1 {
+				color: $color-white;
+				a {
+					text-decoration: none;
+					color: inherit;
+				}
+			}
+		}
+
+		span {
 			color: $color-white;
 			a {
 				text-decoration: none;
 				color: inherit;
 			}
 		}
-		span {
-			color: $color-white;
-			a {
-				text-decoration: none;
-				color: inherit;
+		&-links {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			span {
+				margin: 0 $spacing-xs;
+				&.active {
+					font-weight: $font-weight-bold;
+				}
+			}
+
+			.logout {
+				margin-left: $spacing-xs;
+				color: $color-white;
+				cursor: pointer;
 			}
 		}
 	}

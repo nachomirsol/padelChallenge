@@ -19,18 +19,18 @@ export const AppRoutes = () => {
 						key={route.id}
 						path={route.path}
 						element={
-							<>
-								<Header />
-								<RequireAuth>
+							<RequireAuth>
+								<>
+									<Header />
 									<Component />
-								</RequireAuth>
-							</>
+								</>
+							</RequireAuth>
 						}
 					/>
 				);
 			})}
 
-			<Route path='*' element={<Navigate to='/' />} />
+			<Route path='*' element={<Navigate to='/dashboard' />} />
 		</Routes>
 	);
 };

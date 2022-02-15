@@ -1,14 +1,35 @@
-const initialState = {
+import {
+	USER_LOGIN_FAIL,
+	USER_LOGIN_SUCCESS,
+	USER_LOGOUT,
+} from '../actionTypes';
+import { SetUserLoggedAction, UserState } from '../types';
+
+const initialState: UserState = {
 	isLogged: false,
-	user: null,
+	error: false,
+	user: { access_token: '', email: '' },
 };
 
-const userReducer = (state = initialState, action: any) => {
+const userReducer = (
+	state: UserState = initialState,
+	action: SetUserLoggedAction
+) => {
 	switch (action.type) {
-		case 'USER_LOGIN_SUCCESS':
+		case USER_LOGIN_SUCCESS:
 			return {
-				...state,
+				user: action.payload,
 				isLogged: true,
+			};
+		case USER_LOGIN_FAIL:
+			return {
+				error: true,
+				isLogged: false,
+			};
+		case USER_LOGOUT:
+			return {
+				user: null,
+				isLogged: false,
 			};
 
 		default:

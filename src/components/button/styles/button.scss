@@ -9,4 +9,8 @@
 	border-radius: 1rem;
 	font-size: $font-size-s;
 	cursor: pointer;
+	&.disabled {
+		cursor: not-allowed;
+		opacity: 0.5;
+	}
 }

@@ -1,18 +1,32 @@
+import { useEffect } from 'react';
 /** Components */
 import { Button } from 'components/button';
 import { Input } from 'components/input';
 /** Hooks */
-import { useLogin } from './hooks/useLogin';
+import { useLogin } from 'hooks/useLogin';
 /** Assets */
 import LOGO_PLAYTOMIC from 'assets/logo/logo-playtomic.png';
 /** Styles */
 import './styles/login.scss';
 
-export const Login: React.FC = () => {
-	const { credentials, handleChange, handleClick, error } = useLogin();
+export const Login = () => {
+	const {
+		credentials: { email, password },
+		handleChange,
+		handleSubmit,
+		error,
+		verifyToken,
+		navigate,
+	} = useLogin();
+
+	useEffect(() => {
+		if (verifyToken()) {
+			navigate('/dashboard');
+		}
+	}, []);
 
 	return (
-		<div className='login'>
+		<div className='login' role='login'>
 			<img src={LOGO_PLAYTOMIC} alt='logo playtomic' />
 			<div className='login__form'>
 				<Input
@@ -21,7 +35,7 @@ export const Login: React.FC = () => {
 					width={'60%'}
 					name={'email'}
 					onChange={handleChange}
-					value={credentials.email}
+					value={email}
 				/>
 				<Input
 					type='password'
@@ -29,13 +43,14 @@ export const Login: React.FC = () => {
 					width={'60%'}
 					name={'password'}
 					onChange={handleChange}
-					value={credentials.password}
+					value={password}
 				/>
 				<Button
 					label='login'
 					width={'60%'}
 					height={'40px'}
-					onClick={handleClick}
+					onClick={handleSubmit}
+					disabled={email === '' || password === ''}
 				/>
 				{error && <span>Error in Login or password</span>}
 			</div>

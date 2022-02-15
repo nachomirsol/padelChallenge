@@ -5,7 +5,7 @@ import user from '@testing-library/user-event';
 /** Components */
 import { Loading } from '../';
 
-describe('Input component', () => {
+describe('Loading component', () => {
 	it('Should render component with provided props', () => {
 		render(<Loading />);
 

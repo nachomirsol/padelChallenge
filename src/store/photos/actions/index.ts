@@ -1,3 +1,5 @@
+import { AnyAction, Dispatch } from 'redux';
+import { ThunkAction } from 'redux-thunk';
 /** Service */
 import { getPhotos, searchPhotos, updatePhotoLikes } from 'api/photos';
 /** Action types */
@@ -13,72 +15,84 @@ import {
 	UPDATE_PHOTO_LIKES_SUCCESS,
 } from '../actionTypes';
 
-export const getListPhotoImages = (page: number) => async (dispatch: any) => {
-	try {
-		dispatch({ type: PHOTO_LIST_REQUEST });
+import { RootState } from 'store/rootReducer';
 
-		const { data } = await getPhotos(page);
+export const getListPhotoImages = (
+	page: number
+): ThunkAction<void, RootState, unknown, AnyAction> => {
+	return async (dispatch: Dispatch) => {
+		try {
+			dispatch({ type: PHOTO_LIST_REQUEST });
 
-		dispatch({
-			type: PHOTO_LIST_SUCCESS,
-			payload: data,
-		});
-	} catch (error) {
-		dispatch({
-			type: PHOTO_LIST_FAIL,
-			payload: 'error',
-		});
-	}
+			const { data } = await getPhotos(page);
+
+			dispatch({
+				type: PHOTO_LIST_SUCCESS,
+				payload: data,
+			});
+		} catch (error) {
+			dispatch({
+				type: PHOTO_LIST_FAIL,
+				payload: 'error',
+			});
+		}
+	};
 };
 
-export const loadMoreData = (page: number) => async (dispatch: any) => {
-	try {
-		const { data } = await getPhotos(page);
+export const loadMoreData =
+	(page: number): ThunkAction<void, RootState, unknown, AnyAction> =>
+	async (dispatch: Dispatch) => {
+		try {
+			const { data } = await getPhotos(page);
 
-		dispatch({
-			type: LOAD_MORE_DATA_SUCCESS,
-			payload: data,
-		});
-	} catch {
-		dispatch({
-			type: PHOTO_LIST_FAIL,
-			payload: 'error',
-		});
-	}
-};
+			dispatch({
+				type: LOAD_MORE_DATA_SUCCESS,
+				payload: data,
+			});
+		} catch {
+			dispatch({
+				type: PHOTO_LIST_FAIL,
+				payload: 'error',
+			});
+		}
+	};
 
-export const updateLike = (id: string) => async (dispatch: any) => {
-	try {
-		await updatePhotoLikes(id);
+export const updateLike =
+	(id: string): ThunkAction<void, RootState, unknown, AnyAction> =>
+	async (dispatch: Dispatch) => {
+		try {
+			await updatePhotoLikes(id);
 
-		dispatch({
-			type: UPDATE_PHOTO_LIKES_SUCCESS,
-			payload: id,
-		});
-	} catch (error) {
-		dispatch({
-			type: UPDATE_PHOTO_LIKES_FAIL,
-			payload: 'error updating like',
-		});
-	}
-};
+			dispatch({
+				type: UPDATE_PHOTO_LIKES_SUCCESS,
+				payload: id,
+			});
+		} catch (error) {
+			dispatch({
+				type: UPDATE_PHOTO_LIKES_FAIL,
+				payload: 'error updating like',
+			});
+		}
+	};
 
-export const filterPhotos = (query: string) => async (dispatch: any) => {
-	try {
-		dispatch({ type: FILTER_PHOTO_LIST_REQUEST });
+export const filterPhotos =
+	(query: string): ThunkAction<void, RootState, unknown, AnyAction> =>
+	async (dispatch: Dispatch) => {
+		try {
+			dispatch({ type: FILTER_PHOTO_LIST_REQUEST });
 
-		const {
-			data: { results },
-		} = await searchPhotos(query);
+			const {
+				data: { results },
+			} = await searchPhotos(query);
 
-		dispatch({
-			type: FILTER_PHOTO_LIST_SUCCESS,
-			payload: results,
-		});
-	} catch (error) {
-		dispatch({
-			type: FILTER_PHOTO_LIST_FAIL,
-			payload: 'error',
-		});
-	}
-};
+			dispatch({
+				type: FILTER_PHOTO_LIST_SUCCESS,
+				payload: results,
+			});
+		} catch (error) {
+			dispatch({
+				type: FILTER_PHOTO_LIST_FAIL,
+				payload: 'error',
+			});
+		}
+	};

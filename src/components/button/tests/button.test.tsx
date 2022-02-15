@@ -1,14 +1,15 @@
 /** Libraries */
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import user from '@testing-library/user-event';
 /** Components */
 import { Button } from '..';
 
-describe('Input component', () => {
+describe('Button component', () => {
 	const props = {
 		height: '60px',
 		label: 'text',
+		disabled: false,
 		onClick: jest.fn(),
 	};
 

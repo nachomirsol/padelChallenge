@@ -1,17 +1,15 @@
 /** Libraries */
 import { Navigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { checkLocalStorage } from 'utils/localStorage';
+/** hooks */
+import { useLogin } from 'hooks/useLogin';
 
 export const RequireAuth: React.FC<{ children: JSX.Element }> = ({
 	children,
 }) => {
-	const isLogged =
-		checkLocalStorage() || useSelector((state) => state?.user.isLogged);
-
-	if (!isLogged) {
+	const { verifyToken } = useLogin();
+	if (verifyToken()) {
+		return children;
+	} else {
 		return <Navigate to='/login' />;
 	}
-
-	return children;
 };

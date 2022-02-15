@@ -4,5 +4,9 @@ import { NoDataTypes } from './types';
 import './styles/noData.scss';
 
 export const NoData = ({ label = 'No Data' }: NoDataTypes) => {
-	return <div className='noData'>{label}</div>;
+	return (
+		<div className='noData' role={'noData'}>
+			{label}
+		</div>
+	);
 };

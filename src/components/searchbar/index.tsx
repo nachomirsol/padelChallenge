@@ -13,8 +13,9 @@ export const Searchbar = ({
 	onChange,
 }: SearchbarTypes) => {
 	return (
-		<label role='searchbar' className='searchbar' style={{ width, height }}>
+		<label className='searchbar' style={{ width, height }}>
 			<input
+				role='searchbar'
 				type={type}
 				name={name}
 				placeholder={placeholder}
