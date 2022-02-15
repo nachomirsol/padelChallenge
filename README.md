@@ -14,7 +14,13 @@ The application is developed with React and TypeScript using webpack.
 
 ## RUN THE APP
 
+- <pre><code>npm install</code></pre>
 - <pre><code>npm run dev</code></pre>
+- create .env file in root with the following SECRETS:
+
+REACT_APP_API_ACCESS_KEY=KlC0ZA-aUyU9p2NE-Vp1S_2zUkUf-xntB-SvDmZM4A0
+REACT_APP_API_SECRET_KEY=jxjDqJkVtCRMbx_39E3sbF-1QNA-BHXd2v1OzpBCrMw
+REACT_APP_FIREBASE_API_KEY=AIzaSyDxCHH04W3mdM-Wa-tPM_hMkq1nfOTyd4s
 
 ## RUN TESTS
 
