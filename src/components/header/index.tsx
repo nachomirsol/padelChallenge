@@ -1,11 +1,8 @@
 /** Libraries */
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import jwt_decode from 'jwt-decode';
 /** Constants */
 import { ROUTES } from 'models/routes';
-/** Utils */
-import { checkLocalStorage } from 'utils/localStorage';
 /** Types */
 import { RouteType } from 'types/routes';
 /** Assets */
@@ -16,9 +13,9 @@ import { useLogin } from 'hooks/useLogin';
 import './styles/header.scss';
 
 export const Header = () => {
-	const { handleLogout } = useLogin();
-	// const email = jwt_decode(checkLocalStorage())?.email || '';
-	const email = 'fakeEmail';
+	const { handleLogout, userRedux } = useLogin();
+
+	const email = userRedux?.email;
 	const currentLocation = useLocation();
 	return (
 		<div className='header' role='header'>

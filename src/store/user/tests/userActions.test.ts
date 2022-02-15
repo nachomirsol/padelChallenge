@@ -3,7 +3,7 @@ import { USER_LOGIN_SUCCESS } from '../actionTypes';
 
 describe('User actions', () => {
 	it('Should return the action USER_LOGIN_SUCCESS', () => {
-		const user = 'email@gmail.com';
+		const user = { access_token: 'abc', email: 'email@gmail.com' };
 
 		const expectedAction = {
 			type: USER_LOGIN_SUCCESS,

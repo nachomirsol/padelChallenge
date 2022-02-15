@@ -19,12 +19,12 @@ export const AppRoutes = () => {
 						key={route.id}
 						path={route.path}
 						element={
-							<>
-								<Header />
-								<RequireAuth>
+							<RequireAuth>
+								<>
+									<Header />
 									<Component />
-								</RequireAuth>
-							</>
+								</>
+							</RequireAuth>
 						}
 					/>
 				);

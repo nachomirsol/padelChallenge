@@ -1,21 +1,28 @@
 import { firebaseApp } from 'lib/firebase/firebase';
 import { getAuth, signOut, signInWithEmailAndPassword } from 'firebase/auth';
-import { setLocalStorage } from 'utils/localStorage';
 
 const auth = getAuth(firebaseApp);
+
+export const getUserDB = () => {
+	const user = auth.currentUser;
+
+	if (user) {
+		return user.email;
+	} else {
+		return null;
+	}
+};
 
 export const logInWithEmailAndPassword = async (
 	email: string,
 	password: string
 ) => {
-	try {
-		const user = await signInWithEmailAndPassword(auth, email, password);
-		const token = user?.user?.accessToken;
-		setLocalStorage(token);
-		return token;
-	} catch (err) {
-		console.error(err);
-	}
+	const authData = await signInWithEmailAndPassword(auth, email, password);
+
+	return {
+		access_token: authData?.user?.accessToken,
+		email: authData?.user?.email,
+	};
 };
 
 export const logout = async () => {

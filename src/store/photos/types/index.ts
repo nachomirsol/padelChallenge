@@ -1,5 +1,5 @@
 export type PhotoState = {
-	loading?: boolean;
+	loading: boolean;
 	error?: boolean;
 	photos: any[];
 };

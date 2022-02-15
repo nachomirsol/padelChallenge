@@ -1,11 +1,14 @@
-export const checkLocalStorage = () => {
-	return localStorage.getItem('access_token');
+import { AuthInfo } from 'store/user/types';
+
+export const getLocalStorage = () => {
+	const data = localStorage.getItem('playtomic_user');
+	return JSON.parse(data);
 };
 
-export const setLocalStorage = (token: string) => {
-	localStorage.setItem('access_token', JSON.stringify(token));
+export const setLocalStorage = (user: AuthInfo) => {
+	localStorage.setItem('playtomic_user', JSON.stringify(user));
 };
 
 export const removeLocalStorage = () => {
-	localStorage.removeItem('access_token');
+	localStorage.removeItem('playtomic_user');
 };
