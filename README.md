@@ -1,6 +1,7 @@
 # PLAYTOMIC FRONTEND TEST
 
 The application is developed with React and TypeScript using webpack.
+
 Live version: https://defiant-twig.surge.sh/   (See login credentials below)
 
 ## MAIN STACK
