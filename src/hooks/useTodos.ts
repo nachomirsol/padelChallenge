@@ -14,7 +14,7 @@ export const useTodos = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [itemName, setItemName] = useState('');
 	const dispatch = useDispatch();
-	const { loading, todos, error } = useSelector((state) => state?.todos);
+	const { loading, todos, error } = useSelector((state) => state.todos);
 	useEffect(() => {
 		dispatch(getTodoList(USER_ID));
 	}, []);
@@ -57,6 +57,6 @@ export const useTodos = () => {
 		updateItem,
 		deleteItem,
 		getTodoList,
-		deleteTodoItem
+		deleteTodoItem,
 	};
 };

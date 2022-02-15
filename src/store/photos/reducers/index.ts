@@ -6,7 +6,6 @@ import {
 	PHOTO_LIST_FAIL,
 	PHOTO_LIST_REQUEST,
 	PHOTO_LIST_SUCCESS,
-	UPDATE_PHOTO_LIKES_SUCCESS,
 } from '../actionTypes';
 import { PhotoActions, PhotoState } from '../types';
 
@@ -28,6 +27,7 @@ const photosReducer = (
 
 		case LOAD_MORE_DATA_SUCCESS: {
 			return {
+				loading: false,
 				photos: [...state.photos, ...action.payload],
 			};
 		}

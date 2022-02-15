@@ -1,11 +1,11 @@
 /** Components */
 import { Searchbar } from 'components/searchbar';
 import { Button } from 'components/button';
+import { PhotoListItems } from 'components/photoListItems';
 /** Hooks */
-import { useDashboard } from '../../hooks/usePhotos';
+import { usePhotos } from 'hooks/usePhotos';
 /** Styles */
 import './styles/dashboard.scss';
-import { PhotoListItems } from 'components/photoListItems';
 
 export const Dashboard: React.FC = () => {
 	const {
@@ -15,7 +15,7 @@ export const Dashboard: React.FC = () => {
 		handleChange,
 		handleSearchClick,
 		loadMoreContent,
-	} = useDashboard();
+	} = usePhotos();
 
 	return (
 		<div className='dashboard' role='dashboard'>

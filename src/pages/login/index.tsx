@@ -1,8 +1,9 @@
+import { useEffect } from 'react';
 /** Components */
 import { Button } from 'components/button';
 import { Input } from 'components/input';
 /** Hooks */
-import { useLogin } from '../../hooks/useLogin';
+import { useLogin } from 'hooks/useLogin';
 /** Assets */
 import LOGO_PLAYTOMIC from 'assets/logo/logo-playtomic.png';
 /** Styles */
@@ -14,7 +15,15 @@ export const Login = () => {
 		handleChange,
 		handleSubmit,
 		error,
+		verifyToken,
+		navigate,
 	} = useLogin();
+
+	useEffect(() => {
+		if (verifyToken()) {
+			navigate('/dashboard');
+		}
+	}, []);
 
 	return (
 		<div className='login' role='login'>

@@ -3,12 +3,12 @@ import {
 	USER_LOGIN_SUCCESS,
 	USER_LOGOUT,
 } from '../actionTypes';
-import { SetUserLoggedAction, UserActions, UserState } from '../types';
+import { SetUserLoggedAction, UserState } from '../types';
 
 const initialState: UserState = {
 	isLogged: false,
 	error: false,
-	user: null,
+	user: { access_token: '', email: '' },
 };
 
 const userReducer = (

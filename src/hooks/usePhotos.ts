@@ -10,7 +10,7 @@ import {
 	updateLike,
 } from 'store/photos/actions';
 
-export const useDashboard = () => {
+export const usePhotos = () => {
 	const [query, setQuery] = useState('');
 
 	const [page, setPage] = useState(1);
@@ -55,6 +55,6 @@ export const useDashboard = () => {
 		handleChange,
 		handleSearchClick,
 		loadMoreContent,
-		getListPhotoImages
+		getListPhotoImages,
 	};
 };

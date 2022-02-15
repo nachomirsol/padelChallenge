@@ -1,8 +1,8 @@
 /** Libraries */
-import jwt_decode from 'jwt-decode';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import jwt_decode from 'jwt-decode';
 /** Api */
 import { logInWithEmailAndPassword, logout } from 'api/auth';
 /** Actions */
@@ -11,13 +11,21 @@ import {
 	setUserLoginFailure,
 	setUserLogout,
 } from 'store/user/actions';
+/** Utild */
+import {
+	getLocalStorage,
+	setLocalStorage,
+	removeLocalStorage,
+} from 'utils/localStorage';
+/** Types */
+import { UserState } from 'store/user/types';
 
 export const useLogin = () => {
 	const [credentials, setCredentials] = useState({
 		email: '',
 		password: '',
 	});
-
+	const userRedux = useSelector((state:UserState) => state?.user?.user);
 	const navigate = useNavigate();
 
 	const dispatch = useDispatch();
@@ -32,25 +40,48 @@ export const useLogin = () => {
 	};
 
 	const handleSubmit = async () => {
-		const userLogin = await logInWithEmailAndPassword(
-			credentials.email,
-			credentials.password
-		);
+		try {
+			const userAuthData = await logInWithEmailAndPassword(
+				credentials.email,
+				credentials.password
+			);
+			setLocalStorage(userAuthData);
 
-		if (!userLogin) {
+			dispatch(setUserLogged(userAuthData));
+
+			navigate('/dashboard');
+		} catch (err) {
 			setError(true);
 			dispatch(setUserLoginFailure());
-		} else {
-			const userEmail = jwt_decode(userLogin);
-			dispatch(setUserLogged(userEmail?.email));
-			navigate('/dashboard');
 		}
 	};
 
 	const handleLogout = () => {
 		logout();
+		removeLocalStorage();
 		dispatch(setUserLogout());
 		navigate('/login');
+	};
+	const getUserInfo= () => {
+		if (userRedux.access_token) {
+			return userRedux;
+		} else {
+			const data = getLocalStorage();
+			dispatch(setUserLogged(data));
+			return data;
+		}
+	};
+	const verifyToken = () => {
+		try {
+			const data = getUserInfo();
+
+			const { access_token = null, email } = data;
+			const { email: emailDecode } = jwt_decode(access_token);
+
+			return email === emailDecode;
+		} catch (error) {
+			return false;
+		}
 	};
 
 	return {
@@ -59,5 +90,8 @@ export const useLogin = () => {
 		handleSubmit,
 		error,
 		handleLogout,
+		navigate,
+		verifyToken,
+		userRedux,
 	};
 };

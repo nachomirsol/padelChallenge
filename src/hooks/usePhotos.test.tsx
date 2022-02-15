@@ -1,6 +1,6 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 
-import { useDashboard } from './usePhotos';
+import { usePhotos } from './usePhotos';
 
 let storeRedux = {
 	loading: false,
@@ -15,13 +15,13 @@ jest.mock('react-redux', () => ({
 
 describe('useDashboard hook', () => {
 	test('Should get data from redux store', () => {
-		const { result } = renderHook(() => useDashboard());
+		const { result } = renderHook(() => usePhotos());
 
 		expect(result.current.photos.length).toBe(storeRedux.photos.length);
 	});
 
 	test('It should call a valid action', () => {
-		const { result } = renderHook(() => useDashboard());
+		const { result } = renderHook(() => usePhotos());
 		act(() => {
 			result.current.getListPhotoImages(1);
 		});
@@ -30,7 +30,7 @@ describe('useDashboard hook', () => {
 	});
 
 	test('It should call load more content action', () => {
-		const { result } = renderHook(() => useDashboard());
+		const { result } = renderHook(() => usePhotos());
 		act(() => {
 			result.current.loadMoreContent();
 		});
