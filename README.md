@@ -2,7 +2,7 @@
 
 The application is developed with React and TypeScript using webpack.
 
-**Live version:** https://holistic-beast.surge.sh
+**Live version:** https://defiant-twig.surge.sh/
 
 ## MAIN STACK
 
