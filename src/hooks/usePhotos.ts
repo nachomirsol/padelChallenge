@@ -8,13 +8,15 @@ import {
 	loadMoreData,
 	updateLike,
 } from 'store/photos/actions';
+/** Types */
+import { RootState } from 'store/rootReducer';
 
 export const usePhotos = () => {
 	const [query, setQuery] = useState('');
 
 	const [page, setPage] = useState(1);
 
-	const { loading, photos } = useSelector((state) => state?.photos);
+	const { loading, photos } = useSelector((state:RootState) => state?.photos);
 
 	const dispatch = useDispatch();
 

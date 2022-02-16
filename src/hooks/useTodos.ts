@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from 'store/rootReducer';
 import {
 	deleteTodoItem,
 	getTodoList,
@@ -14,7 +14,9 @@ export const useTodos = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [itemName, setItemName] = useState('');
 	const dispatch = useDispatch();
-	const { loading, todos, error } = useSelector((state) => state.todos);
+	const { loading, todos, error } = useSelector(
+		(state: RootState) => state.todos
+	);
 	useEffect(() => {
 		dispatch(getTodoList(USER_ID));
 	}, []);
