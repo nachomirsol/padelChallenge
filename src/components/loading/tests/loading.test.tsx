@@ -9,8 +9,8 @@ describe('Loading component', () => {
 	it('Should render component with provided props', () => {
 		render(<Loading />);
 
-		const input = screen.getByRole('loading');
+		const loading = screen.getByRole('loading');
 
-		expect(input).toBeInTheDocument();
+		expect(loading).toBeInTheDocument();
 	});
 });

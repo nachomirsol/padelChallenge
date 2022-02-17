@@ -16,17 +16,17 @@ describe('Searchbar component', () => {
 	it('Should render component with provided props', () => {
 		render(<Searchbar {...props} />);
 
-		const input = screen.getByRole('searchbar');
+		const searchbar = screen.getByRole('searchbar');
 
-		expect(input).toBeInTheDocument();
+		expect(searchbar).toBeInTheDocument();
 	});
 
 	it('Should call onChange on type input', () => {
 		render(<Searchbar {...props} />);
-		const input = screen.getByRole('searchbar');
+		const searchbar = screen.getByRole('searchbar');
 		const textToType = 'myName';
 
-		user.type(input, textToType);
+		user.type(searchbar, textToType);
 
 		expect(props.onChange).toHaveBeenCalled();
 		expect(props.onChange).toHaveBeenCalledTimes(textToType.length);
