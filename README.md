@@ -29,7 +29,7 @@ REACT_APP_FIREBASE_API_KEY=AIzaSyDxCHH04W3mdM-Wa-tPM_hMkq1nfOTyd4s</code></pre>
 After setup steps:
 
 - Unit and integration tests: <pre><code>npm run test</code></pre>
-- End to End tests tests: <pre><code>npm run test:e2e"</code></pre> Important executing this tests with the app running.
+- End to End tests tests: <pre><code>npm run test:e2e"</code></pre> Important executing this tests with the app running (it depends on connection network).
 
 ## LOGIN CREDENTIALS
 

@@ -1,6 +1,6 @@
 describe('Login test', () => {
 	it('Can open the app', () => {
-		cy.visit('http://localhost:8080/login');
+		cy.visit('https://defiant-twig.surge.sh/');
 	});
 
 	it('Can enter an email', () => {

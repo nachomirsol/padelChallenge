@@ -2,8 +2,8 @@ describe('/settings', () => {
 	const TOTAL_ITEMS = 20;
 	beforeEach(() => {
 		cy.login();
-		cy.visit('http://localhost:8080/settings');
-		cy.wait(2000);
+		cy.visit('https://defiant-twig.surge.sh/settings');
+		cy.wait(3000);
 	});
 
 	it('can find a list of 20 list items', () => {
