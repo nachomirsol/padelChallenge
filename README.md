@@ -16,9 +16,12 @@ The application is developed with React and TypeScript using webpack.
 
 ## RUN THE APP LOCALLY
 
-- npm install
-- <pre><code>npm run dev</code></pre>
-- Env variables: In an .env file place these keys
+1. Clone the repo
+2. Execute **npm install** to get all the node_modules dependencies
+3. Create .env file at the root of the project with the environment variables below
+4. Execute **npm run dev** to run the app local
+
+### Env Variables
 
 <pre><code>REACT_APP_API_ACCESS_KEY=KlC0ZA-aUyU9p2NE-Vp1S_2zUkUf-xntB-SvDmZM4A0
 REACT_APP_API_SECRET_KEY=jxjDqJkVtCRMbx_39E3sbF-1QNA-BHXd2v1OzpBCrMw
