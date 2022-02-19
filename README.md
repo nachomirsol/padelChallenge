@@ -26,11 +26,6 @@ REACT_APP_FIREBASE_API_KEY=AIzaSyDxCHH04W3mdM-Wa-tPM_hMkq1nfOTyd4s</code></pre>
 
 ## RUN TESTS
 
-Considerations:
-- Project is created with webpack so **react-scripts** dependency should'nt be necessary.
-- **react-scripts** cause some test fail.
-After setup steps:
-
 - Unit and integration tests: <pre><code>npm run test</code></pre>
 - End to End tests tests: <pre><code>npm run test:e2e"</code></pre> Important executing this tests with the app running (it depends on connection network).
 
