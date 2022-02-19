@@ -1,4 +1,9 @@
 import { renderHook, act } from '@testing-library/react-hooks';
+import { Provider } from 'react-redux';
+import { applyMiddleware, createStore } from 'redux';
+import thunk from 'redux-thunk';
+import { rootReducer } from 'store/rootReducer';
+import { waitFor, wrapper } from 'utils/tests';
 
 import { usePhotos } from './usePhotos';
 
@@ -17,24 +22,8 @@ describe('useDashboard hook', () => {
 	test('Should get data from redux store', () => {
 		const { result } = renderHook(() => usePhotos());
 
-		expect(result.current.photos.length).toBe(storeRedux.photos.length);
-	});
-
-	test('It should call a valid action', () => {
-		const { result } = renderHook(() => usePhotos());
-		act(() => {
-			result.current.getListPhotoImages(1);
-		});
-
-		expect(mockDispatch).toHaveBeenCalledTimes(2);
-	});
-
-	test('It should call load more content action', () => {
-		const { result } = renderHook(() => usePhotos());
-		act(() => {
-			result.current.loadMoreContent();
-		});
-
-		expect(mockDispatch).toHaveBeenCalledTimes(4);
+		waitFor(() =>
+			expect(result.current.photos.length).toBe(storeRedux.photos.length)
+		);
 	});
 });
